@@ -1,0 +1,155 @@
+<html>
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>timer</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../timer.css">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+
+<style>
+body{
+background: #C9D6FF;
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+}
+</style>
+</head>
+<body>
+
+<div class="container mt-5"
+<div class="row">
+<div class="col-md-3">
+<div class="card bg-dark text-white">
+<h3 class="card-title text-center">
+<div class="d-flex flex-wrap justify-content-center mt-2">
+<a><span class="badge hours"></span></a> :
+<a><span class="badge min"></span></a> :
+<a><span class="badge sec"></span></a>
+</div>
+</h3>
+</div>
+</div>
+</div>
+</div>
+
+<!-- /.flexbox clock row -->
+<div class="mt-5 d-flex justify-content-center" id="stopwatch">
+    <button class="btn btn-success"  type="button" id="click">START</button>
+</div>
+<div  id="watch" class="mt-5" hidden>   
+<div >
+  <h1 id="current" hidden></h1>
+  <p class="para"></p>
+</div> 
+</div>
+<div class="d-flex justify-content-center" style="margin-top: 10%; gap:20px">
+<button class="btn btn-danger "  id="reset">RESET</button>
+<button class="btn btn-warning " id="stop">STOP</button>
+</div>
+<p id="popat"></p>
+<script>
+   
+$(document).ready(function() {
+setInterval( function() {
+var hours = new Date().getHours();
+$(".hours").html(( hours < 10 ? "0" : "" ) + hours);
+}, 1000);
+setInterval( function() {
+var minutes = new Date().getMinutes();
+$(".min").html(( minutes < 10 ? "0" : "" ) + minutes);
+},1000);
+setInterval( function() {
+var seconds = new Date().getSeconds();
+$(".sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+},1000);
+});
+var interval;
+var seconds=0;
+var minutes=0;
+var hours=0;
+
+$("#click").on("click",()=>{
+  $("#watch").removeAttr("hidden");
+   interval=setInterval(()=>{
+    seconds++;
+
+    if(seconds==60){
+      minutes++;
+      seconds=0;
+     
+    }
+    if(minutes==60){
+      hours++;
+      minutes=0;
+    }
+
+    $(".para").html((hours<10?"0"+hours:hours)+":"+(minutes<10?"0"+minutes:minutes)+":"+(seconds<10?"0"+seconds:seconds));
+    
+ var audio=new Audio("../images/music.mp3");
+ audio.play();
+  },1000);
+})
+ 
+var uname="<%=uname%>";
+
+$("#reset").on("click",async()=>{
+  clearInterval(interval);
+  
+  const response = await axios.post(
+  "/time",
+  { seconds, minutes, hours,uname},
+  {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+).then((response)=>{
+  
+
+  console.log(response.status);
+  $("#popat").removeAttr("hidden");
+  $("#popat").html("Well Done!  "+(hours<10?"0"+hours:hours)+":"+(minutes<10?"0"+minutes:minutes)+":"+(seconds<10?"0"+seconds:seconds));
+
+
+  
+})
+.catch((error)=>{
+  console.log(error);
+})
+  minutes=0;
+  hours=0;
+  seconds=0;
+  
+  $(".para").html("00:00:00");
+
+  if ($("#popat").hasClass("add")) {
+    $("#popat").removeClass("add");
+
+    // Use setTimeout to re-add the class after a slight delay
+    setTimeout(() => {
+      $("#popat").addClass("add");
+    }, 10);
+  } else {
+    // If the class is not present, directly add it
+    $("#popat").addClass("add");
+  }
+
+
+
+
+
+})
+
+$("#stop").on("click",()=>{
+  clearInterval(interval);
+})
+
+</script>
+
+<body>
+  </html>

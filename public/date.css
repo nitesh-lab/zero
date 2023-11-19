@@ -1,0 +1,21 @@
+/* Style for the container */
+.custom-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column width */
+    gap: 20px; /* Adjust the gap between elements */
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Style for elements with the class */
+  .custom-class {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    text-align: center; /* Center text */
+    font-weight: bold;
+  }
+  

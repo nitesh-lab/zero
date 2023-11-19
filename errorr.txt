@@ -1,0 +1,2 @@
+start button multiple taps set interval count increases with more speed.
+and stop also dont work make it one time per entry.

@@ -1,0 +1,89 @@
+body{
+    font-family:'Kdam Thmor Pro',sans-serif;
+    background-color:#0d6efd;
+}
+.container-fluid{
+    height: 90px;
+    background-color: black;
+    font-family: 'Agbalumo',sans-serif;
+}
+
+#head{
+    font-size:22px;
+}
+.row>div{
+    font-size: 16px;
+    color:white;
+}
+.row> div img {
+    transition: transform 0.3s ease-in-out;
+    background-color: white;
+}
+.row> div img:hover{
+    transform: scale(1.5);
+}
+
+#pop{
+    transition: transform 0.3s ease-in-out;
+    
+}
+#pop:hover{
+    transform: scale(1.1);
+}
+
+
+.schedule{
+    transition: transform 0.3s ease-in-out;
+    background-color: white;
+}
+.schedule:hover{
+    transform: scale(1.5);
+   
+}
+
+.trans p{
+    transition:font-size 0.5s linear;
+}
+.trans p:hover{
+    font-size:20px;
+}
+
+#list{
+    margin-top: 5%;
+    margin-bottom:1%;
+    height: 200px;
+}
+
+.box{
+    
+    height:35vh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.try{
+    background-color: red;
+}
+.trap{
+    height:150px;
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(50,1fr);
+    grid-template-rows:repeat(8,1fr);
+    gap: 5px ;
+} 
+#time{
+    font-family: 'Agbalumo',sans-serif;
+    color:white;
+    background-color: black;
+    transition:transform 0.3s ease-in;
+}
+#time:hover{
+    transform: scale(1.5);
+}
+
+.hey{
+    transform: scale(1.1);
+    background-color: green;
+}
+

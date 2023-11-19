@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
+    
+<link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../index2.css">
+</head>
+
+<body>
+    <div class="container-fluid gx-5">
+    <div class="row text-start ">
+    <div class="col-12 col-sm-1  my-4 "><a href="/index"><img src="../images/time.png" width="40px" height="40px" alt="nope"></a></div>          
+    <div class="col-12 col-sm-2 my-4 trans"><p>PROGRESS</p></div>
+    <div class="col-12 col-sm-2 my-4 trans">
+      <button style="background-color: black;color: white;" class="schedule">SCHEDULE</button>
+    </div>
+
+    <div class="col-12 col-sm-4 my-4 trans" id="head">
+        <p>TIME MANAGEMENT</p>
+    </div>
+    <div class="col-12 col-sm-2 my-4">
+    <input type="text" name="value" id="a" placeholder="DD/MM/YYYY" autofocus ></div>
+    <div id="pop"class="col-12 col-sm-1 my-4 trans"><a  style="text-decoration: none;" href="/timer?uname=<%=locals.uname%>" id="time">TIMER</a></div>
+    </div>
+    </div>
+   
+    <div id="list" class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+      <div class="list-group text-center">
+        <label class="list-group-item d-flex gap-3">
+         
+          <span class="pt-1 form-checked-content">
+            <strong style="text-align: center;">STREAK</strong>
+            <small class="d-block text-body-secondary">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"></use></svg>
+              <%=locals.streak%> DAYS
+            </small>
+          </span>
+        </label>
+        <label class="list-group-item d-flex gap-3">
+          
+          <span class="pt-1 form-checked-content">
+            <strong>STUDY TIME</strong>
+            <small class="d-block text-body-secondary">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"></use></svg>
+              <%=locals.total%> MINUTES
+            </small>
+          </span>
+        </label>
+        
+      </div>
+    </div>
+    <div class="box" id="abs">
+       
+        <div class="trap">
+    
+        <%for(var i=0;i<365;i++){%>
+        <div class="try" id="<%=locals.val+i%>">
+        </div>
+    <%}%>
+    </div>
+    </div>
+
+    <script>
+        var data =JSON.parse('<%-locals.date%>');
+        console.log(data.length);
+      
+        for (var i = 0; i < data.length; i++) {
+          document.getElementById("a" + data[i]).classList.add("hey");
+        }
+
+        document.querySelector(".schedule").addEventListener("click",()=>{
+          console.log("/schedule?uname="+'<%=uname%>');
+         window.location.href="/schedule?uname="+'<%=uname%>';
+        });
+
+        document.getElementById("a").addEventListener("keypress",(event)=>{
+        
+          if(event.key=="Enter"){
+            var date=document.getElementById("a").value;
+            axios.post("/date",{data:date,name:'<%=uname%>'},{headers:{
+              'content-type':'application/json'
+            }})
+            .then((response)=>{
+              console.log(response.data.d.length);  
+              window.location.href="/next?data="+JSON.stringify(response.data.d);
+            })
+            .catch((error)=>{
+              console.log(error);
+            })
+          }
+        })
+
+
+      </script>
+
+</body>
+</html>

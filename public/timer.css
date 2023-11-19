@@ -1,0 +1,55 @@
+body{
+    font-family:'Kdam Thmor Pro',sans-serif;
+}
+
+.container{
+    height: 10vh;
+    display: flex;
+    justify-content:center;
+    align-items: start;
+}
+
+
+#watch{
+
+    display:flex;
+     justify-content:center;
+}
+
+.para{
+    font-size: 18px;
+}
+
+#popat{
+    font-size: 25px;
+    color: black;
+    background: #C9D6FF;
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+
+
+}
+.add{
+    position: fixed;
+    right: -100%;
+
+    animation:slideIn 2s forwards,slideOut 2s forwards 2s;
+}
+
+@keyframes slideIn {
+        0%{
+            right: -100%;
+        }
+        100%{
+            right: 40px;
+        }
+}
+
+@keyframes slideOut {
+    0% {
+        right: 40px; /* Stays in the desired position */
+    }
+    100% {
+        right: -100%; /* Moves off the screen */  
+    }
+}

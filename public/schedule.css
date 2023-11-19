@@ -1,0 +1,36 @@
+body{
+        font-family:'Kdam Thmor Pro',sans-serif;
+        background-color:#0d6efd;
+}
+#er{
+    height: 80px;
+    background-color: black;
+    .row>*{
+        color:white;
+    }
+}
+p{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.format{
+    font-size: 20px;
+    display: flex;
+    color: black;
+    padding-left:20px;
+    justify-content:flex-start;
+    gap:10px;
+    margin-bottom: 30px;
+}
+
+.task{
+    margin-top:20px;
+    align-self:flex-end;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    background-color: #0dcaf0;
+}
+.change{
+    margin-left: 50%;
+}
