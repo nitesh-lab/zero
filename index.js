@@ -7,7 +7,7 @@ const db=new pg.Client({
      user: 'try_u9ab_user',
   host: 'dpg-cld5g13mot1c73dlfdv0-a',
   database: 'try_u9ab',
-    password:"19810511",
+    password:'nCx3fcjDZeyLGstSxsmLDDnVVgNwZEog',
     port:5432
 })
 
