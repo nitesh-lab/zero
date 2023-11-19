@@ -4,9 +4,9 @@ import axios from "axios";
 import pg from "pg";
 
 const db=new pg.Client({
-    user:"postgres",
-    host:"localhost",
-    database:"project",
+     user: 'try_u9ab_user',
+  host: 'dpg-cld5g13mot1c73dlfdv0-a',
+  database: 'try_u9ab',
     password:"19810511",
     port:5432
 })
