@@ -196,7 +196,7 @@ app.get("/next",(req,res)=>{
      res.render("date.ejs",{data:JSON.stringify(d)});
 })
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
     console.log("listening to port 3000");
 })
  
