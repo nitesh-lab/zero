@@ -55,7 +55,7 @@ app.post("/login",async(req,res,next)=>{
     const response=await axios.get("http://worldtimeapi.org/api/timezone/Asia/Kolkata");   
     console.log(response.data);
     console.log(response.data.datetime.slice(8,10));
-    var month=response.data.datetime.slice(5,7);
+    var month=new Date().getMonth();
     console.log("month="+month);
    try{
    const response2=await db.query("insert into streak(date,uname)values($1,$2)returning uname",[response.data.datetime.slice(8,10),name]);
