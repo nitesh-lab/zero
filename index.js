@@ -153,7 +153,7 @@ app.post("/todo",logger,async(req,res)=>{
   const response2=await db.query("select schedule from schedule where id=$1",[response.rows[0].id]);
   const date=new Date();
   var dat=date.getDate();
-  var month=date.getMonth();
+  var month=date.getMonth()+1;
   var year=date.getFullYear();
   const response3=await db.query("insert into todo(date,mth,yr,task,uname)values($1,$2,$3,$4,$5) returning id",[dat,month,year,data,uname]);
   console.log("inserted at"+response3.rows[0].id);
