@@ -133,9 +133,7 @@ app.get("/home", logger, async (req, res) => {
     }
     const response2=await db.query("select *from time");
     console.log(response2.rows.length);
-    if(response2.rows.length>5){
-        const response3=await (db.query("delete from time"));
-    }    
+     
     res.sendStatus(200);
   })
 
